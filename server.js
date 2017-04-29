@@ -4,6 +4,8 @@ var express = require('express');
 var ShareDB = require('sharedb');
 var WebSocket = require('ws');
 var WebSocketJSONStream = require('websocket-json-stream');
+var port = process.env.PORT || 9001;
+
 
 // Creating a new ShareDB instance
 var backend = new ShareDB();
@@ -24,7 +26,7 @@ function createDoc(callback) {
     });
 }
 
-//Function to start the server
+//Function to start
 function startServer() {
     // Create a web server to serve files and listen to WebSocket connections
     var app = express();
@@ -40,6 +42,8 @@ function startServer() {
         backend.listen(stream);
     });
 
-    server.listen(8080);
-    console.log('Listening on http://localhost:8080');
+    server.listen(port);
+    server.on('listening', function(){
+    console.log('Listening to ', port);
+});
 }
