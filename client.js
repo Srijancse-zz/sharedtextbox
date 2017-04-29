@@ -5,7 +5,7 @@ var StringBinding = require('sharedb-string-binding');
 var socket = new WebSocket('ws://' + window.location.host);
 var connection = new sharedb.Connection(socket);
 
-// Create local Doc instance mapped to 'examples' collection document with id 'textarea'
+// Create local Doc instance with id 'textarea'
 var doc = connection.get('sharedtextbox', 'textarea');
 doc.subscribe(function (err) {
     if (err) throw err;

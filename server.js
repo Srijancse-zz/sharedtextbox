@@ -1,10 +1,13 @@
+//All the required pre-requistic libraries, and enabling them
 var http = require('http');
 var express = require('express');
 var ShareDB = require('sharedb');
 var WebSocket = require('ws');
 var WebSocketJSONStream = require('websocket-json-stream');
 
+// Creating a new ShareDB instance
 var backend = new ShareDB();
+//Starting the server
 createDoc(startServer);
 
 // Create initial document then fire callback
@@ -21,6 +24,7 @@ function createDoc(callback) {
     });
 }
 
+//Function to start the server
 function startServer() {
     // Create a web server to serve files and listen to WebSocket connections
     var app = express();
